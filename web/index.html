@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Study Planner AI Agent</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <div class="bg"></div>
+
+  <header class="topbar">
+    <div class="brand">
+      <div class="logo">SA</div>
+      <div>
+        <div class="title">Study Planner AI Agent</div>
+        <div class="subtitle">Notes → Answers with sources → Weekly plan → Calendar file</div>
+      </div>
+    </div>
+    <a class="pill" href="#" id="healthBtn">Server: check</a>
+  </header>
+
+  <main class="layout">
+    <section class="card">
+      <h2>1) Add notes</h2>
+      <p class="muted">Paste any topic notes. The app chunks and indexes them for retrieval. [web:99]</p>
+      <label class="lbl">Title</label>
+      <input id="noteTitle" class="input" placeholder="e.g., Digital Logic — Gates" />
+      <label class="lbl">Notes text</label>
+      <textarea id="noteText" class="textarea" placeholder="Paste your notes here…"></textarea>
+      <div class="row">
+        <button id="saveNotes" class="btn">Save notes</button>
+        <div id="saveStatus" class="status"></div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>2) Ask from notes</h2>
+      <label class="lbl">Question</label>
+      <input id="question" class="input" placeholder="Ask anything from your notes…" />
+      <div class="row">
+        <button id="askBtn" class="btn">Ask</button>
+        <button id="seedBtn" class="btn ghost">Seed demo notes</button>
+      </div>
+
+      <div class="answer">
+        <div id="answerText" class="answerText"></div>
+        <div id="citations" class="citations"></div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>3) Generate weekly plan (.ics)</h2>
+      <p class="muted">The agent creates calendar events using RFC 5545-compatible VEVENT fields. [web:105][web:91]</p>
+
+      <label class="lbl">Goal</label>
+      <input id="goal" class="input" placeholder="e.g., Learn Node + Express + build 2 projects" />
+
+      <div class="grid2">
+        <div>
+          <label class="lbl">Start date</label>
+          <input id="startDate" class="input" type="date" />
+        </div>
+        <div>
+          <label class="lbl">Sessions/week</label>
+          <input id="sessions" class="input" type="number" min="1" max="7" value="5" />
+        </div>
+        <div>
+          <label class="lbl">Minutes/session</label>
+          <input id="minutes" class="input" type="number" min="15" max="180" value="60" />
+        </div>
+        <div>
+          <label class="lbl">Timezone label</label>
+          <input id="tz" class="input" value="Asia/Kathmandu" />
+        </div>
+      </div>
+
+      <div class="row">
+        <button id="downloadIcs" class="btn">Download study-plan.ics</button>
+        <div id="planStatus" class="status"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    Built for 2026: agents + security basics + grounded answers. [web:87][web:51]
+  </footer>
+
+  <script src="./app.js"></script>
+</body>
+</html>
